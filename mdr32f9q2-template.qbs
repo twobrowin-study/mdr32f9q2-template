@@ -25,12 +25,12 @@ Project {
       fileTags: ['c']
     }
     Group {
-    name: "startup-libs"
-    files: [
-    project.startupPath + "system_MDR32F9Qx.c",
-    project.startupPath + "gcc/startup_MDR32F9Qx.S"
-    ]
-    fileTags: ['sl']
+      name: "startup-libs"
+      files: [
+        project.startupPath + "system_MDR32F9Qx.c",
+        project.startupPath + "gcc/startup_MDR32F9Qx.S"
+      ]
+      fileTags: ['sl']
     }
     Group {
       name: "perf-libs"
@@ -64,7 +64,7 @@ Project {
         args.push(input.filePath)
         args.push("-o")
         args.push(output.filePath);
-        var compilerPath = "/usr/bin/arm-none-eabi-gcc"
+        var compilerPath = "arm-none-eabi-gcc"
         var cmd = new Command(compilerPath, args)
         cmd.description = "compiling " + input.fileName
         cmd.highlight = "compiler"
@@ -92,7 +92,7 @@ Project {
         args.push("-T" + project.lnFile)
         args.push("-o")
         args.push(output.filePath)
-        var compilerPath = "/usr/bin/arm-none-eabi-gcc"
+        var compilerPath = "arm-none-eabi-gcc"
         var cmd = new Command(compilerPath, args)
         cmd.description = "linking " + project.name
         return cmd
@@ -110,7 +110,7 @@ Project {
         args.push("ihex")
         args.push(input.filePath)
         args.push(output.filePath)
-        var hexcreator = "/usr/bin/arm-none-eabi-objcopy"
+        var hexcreator = "arm-none-eabi-objcopy"
         var cmd = new Command(hexcreator, args)
         cmd.description = "create_hex " + project.name
         return cmd;
